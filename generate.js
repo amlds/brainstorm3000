@@ -108,26 +108,34 @@ var colors = [
 '#AFEBDA'
 ]
 
-var container = document.querySelector('#my-container');
+let htmlFormatCard = document.querySelector('#FormatCard');
+let htmlThemeCard = document.querySelector('#ThemeCard');
+let htmlTargetCard = document.querySelector('#TargetCard');
+let htmlTechnicalCard = document.querySelector('#TechnicalCard');
+let htmlFormatCitation = document.querySelector('#FormatCitation');
+let htmlThemeCitation = document.querySelector('#ThemeCitation');
+let htmlTargetCitation = document.querySelector('#TargetCitation');
+let htmlTechnicalCitation = document.querySelector('#TechnicalCitation');
 
 document.body.onkeyup = function(e) {
   if (e.key == " " ||
       e.code == "Space" ||
       e.keyCode == 32
   ) {
-    container.innerHTML = "";
+
     for (let i = 0; i < 5; i++) {
-      var su_index = Math.floor(Math.random() * supports.length)
-      var th_index = Math.floor(Math.random() * themes.length)
-      var ta_index = Math.floor(Math.random() * targets.length)
-      var tc_index = Math.floor(Math.random() * technicalContraints.length)
-      var line = `
-      <div class="my-card py-3 px-5 my-3" style="background: ${colors[i]}">
-        Créer <b>${supports[su_index]}</b> sur le thème <b>${themes[th_index]}</b>
-        pour les <b>${targets[ta_index]}</b>
-        avec comme contrainte technique <b>${technicalContraints[tc_index]}</b>
-      </div>`
-      container.insertAdjacentHTML('beforeend', line)
+      var su_index = Math.floor(Math.random() * supports.length);
+      var th_index = Math.floor(Math.random() * themes.length);
+      var ta_index = Math.floor(Math.random() * targets.length);
+      var tc_index = Math.floor(Math.random() * technicalContraints.length);
+      htmlFormatCard.innerHTML = supports[su_index];
+      htmlFormatCitation.innerHTML = supports[su_index];
+      htmlThemeCard.innerHTML = themes[th_index];
+      htmlThemeCitation.innerHTML = themes[th_index];
+      htmlTargetCard.innerHTML = targets[ta_index];
+      htmlTargetCitation.innerHTML = targets[ta_index];
+      htmlTechnicalCard.innerHTML = technicalContraints[tc_index];
+      htmlTechnicalCitations.innerHTML = technicalContraints[tc_index];
     }
   }
 }
