@@ -65,6 +65,8 @@ body {
 
 header {
   background-image: url("img/banner.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 30vh;
 }
 
