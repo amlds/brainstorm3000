@@ -144,3 +144,9 @@ header {
 .technical-color {
   background-color: #68D98F;
 }
+
+footer {
+  position: absolute;
+  bottom: 2vh;
+  right: 4vw;
+}
