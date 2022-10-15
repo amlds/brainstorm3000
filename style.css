@@ -114,7 +114,7 @@ header {
 
 .quote {
   position: absolute;
-  bottom: 70%;
+  top: -30px;
   right: 97%;
 }
 
