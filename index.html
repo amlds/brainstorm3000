@@ -12,30 +12,66 @@
 </head>
 <body>
   <header>
-    <img class="logo" src="img/Logo.png" alt="logo le wagon">
+    <img class="logo" src="img/logo.svg" alt="logo le wagon">
   </header>
   <div class="container">
-    <div class="text-center my-4 w-100">
+    <div class="">
       <h1>Out of inspiration</h1>
       <h3>Tap on spacebar to generate or click on a word to lock it</h3>
-      <p>Remember this is just a brainstorming and not an idea as such</p>
+      <div class="warning">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 warning-icon" >
+          <path fill-rule="evenodd"
+          d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
+          clip-rule="evenodd" />
+        </svg>
+        <p>Remember this is just a brainstorming and not an idea as such</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 warning-icon">
+          <path fill-rule="evenodd"
+          d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
+          clip-rule="evenodd" />
+        </svg>
+      </div>
     </div>
+
     <div class="row" id="my-container">
-      <div class="card">
-        <span class="color ormat-color"></span>
-        <h2 id="FormatCard">Format</h2>
+      <div class="card-container">
+        <div class="card unlocked-card" id="format-card" data-type="format">
+          <span class="color format-color"></span>
+          <h2 id="format-text">Format</h2>
+        </div>
+
+        <div class="back-card"></div>
+        <span class="back-color format-color"></span>
       </div>
-      <div class="card">
-        <span class="color theme-color"></span>
-        <h2 id="ThemeCard">Theme</h2>
+
+      <div class="card-container">
+        <div class="card unlocked-card" id="theme-card" data-type="theme">
+          <span class="color theme-color"></span>
+          <h2 id="theme-text">Theme</h2>
+
+        </div>
+        <div class="back-card"></div>
+        <span class="back-color theme-color"></span>
       </div>
-      <div class="card">
-        <span class="color target-color"></span>
-        <h2 id="TargetCard">Target</h2>
+
+      <div class="card-container">
+        <div class="card unlocked-card" id="target-card" data-type="target">
+          <span class="color target-color"></span>
+          <h2 id="target-text">Target</h2>
+        </div>
+
+        <div class="back-card"></div>
+        <span class="back-color target-color"></span>
       </div>
-      <div class="card">
-        <span class="color technical-color"></span>
-        <h2 id="TechnicalCard">Technical constraint</h2>
+
+      <div class="card-container">
+        <div class="card unlocked-card" id="technical-card" data-type="technical">
+          <span class="color technical-color"></span>
+          <h2 id="technical-text">Technical constraint</h2>
+        </div>
+
+        <div class="back-card"></div>
+        <span class="back-color technical-color"></span>
       </div>
     </div>
 
@@ -43,15 +79,15 @@
       <svg class="quote" width="58" height="47" viewBox="0 0 58 47" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M25.1524 41.615L25.155 41.6125C27.6791 39.2695 29.0077 36.371 29.0077 33.0137C29.0077 29.6409 27.9613 26.7345 25.746 24.4898C23.5597 22.1847 20.5363 21.157 16.982 21.157C16.9362 21.157 16.8906 21.1573 16.845 21.158C17.3174 20.1715 18.0307 19.2885 19.0027 18.4935C21.0557 16.8861 23.1422 16.0248 25.2805 15.809L27.0797 15.6275V13.8191V5V2.83065L24.9175 3.00659C19.1033 3.4797 13.8511 5.9483 9.19335 10.2794C4.28932 14.8395 2 21.5054 2 29.901C2 33.8838 3.21628 37.4102 5.6713 40.3828C8.23277 43.4843 11.737 45 15.9537 45C19.5563 45 22.6769 43.9046 25.1524 41.615ZM52.1447 41.615L52.1473 41.6125C54.6713 39.2695 56 36.371 56 33.0137C56 29.6409 54.9536 26.7345 52.7383 24.4899C50.552 22.1847 47.5286 21.157 43.9743 21.157C43.9285 21.157 43.8829 21.1573 43.8372 21.158C44.3096 20.1715 45.023 19.2886 45.9949 18.4936C48.0479 16.8861 50.1345 16.0248 52.2728 15.809L54.072 15.6275V13.8191V5V2.83065L51.9098 3.00659C46.0956 3.4797 40.8434 5.9483 36.1856 10.2794L36.1784 10.2861L36.1712 10.2929C31.3608 14.8554 29.1208 21.5165 29.1208 29.901C29.1208 33.8629 30.2811 37.3785 32.6385 40.3518L32.6509 40.3674L32.6636 40.3828C35.2251 43.4843 38.7293 45 42.946 45C46.5486 45 49.6692 43.9046 52.1447 41.615Z" fill="#E1E1E1" stroke="white" stroke-width="4"/>
       </svg>
-      <h2>
+      <h2 class="quotation">
         That's a
-        <span class="tags format-color" id="FormatCitation">Format</span>
+        <span class="tags format-color" id="format-quotation">Format</span>
         about
-        <span class="tags theme-color" id="ThemeCitation">Theme</span>
+        <span class="tags theme-color" id="theme-quotation">Theme</span>
         for
-        <span class="tags target-color" id="TargetCitation">Target</span>
+        <span class="tags target-color" id="target-quotation">Target</span>
         and
-        <span class="tags technical-color" id="TechnicalCitation">Technical constraint</span>
+        <span class="tags technical-color" id="technical-quotation">Technical constraint</span>
         as techical constraint
       </h2>
       <svg class="quote" width="58" height="47" viewBox="0 0 58 47" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -108,34 +108,84 @@ var colors = [
 '#AFEBDA'
 ]
 
-let htmlFormatCard = document.querySelector('#FormatCard');
-let htmlThemeCard = document.querySelector('#ThemeCard');
-let htmlTargetCard = document.querySelector('#TargetCard');
-let htmlTechnicalCard = document.querySelector('#TechnicalCard');
-let htmlFormatCitation = document.querySelector('#FormatCitation');
-let htmlThemeCitation = document.querySelector('#ThemeCitation');
-let htmlTargetCitation = document.querySelector('#TargetCitation');
-let htmlTechnicalCitation = document.querySelector('#TechnicalCitation');
+let formatCard = document.querySelector('#format-card');
+let themeCard = document.querySelector('#theme-card');
+let targetCard = document.querySelector('#target-card');
+let technicalCard = document.querySelector('#technical-card');
+
+let formatText = document.querySelector('#format-text');
+let themeText = document.querySelector('#theme-text');
+let targetText = document.querySelector('#target-text');
+let technicalText = document.querySelector('#technical-text');
+
+let formatQuotation = document.querySelector('#format-quotation');
+let themeQuotation = document.querySelector('#theme-quotation');
+let targetQuotation = document.querySelector('#target-quotation');
+let technicalQuotation = document.querySelector('#technical-quotation');
 
 document.body.onkeyup = function(e) {
-  if (e.key == " " ||
-      e.code == "Space" ||
-      e.keyCode == 32
-  ) {
 
-    for (let i = 0; i < 5; i++) {
-      var su_index = Math.floor(Math.random() * supports.length);
-      var th_index = Math.floor(Math.random() * themes.length);
-      var ta_index = Math.floor(Math.random() * targets.length);
-      var tc_index = Math.floor(Math.random() * technicalContraints.length);
-      htmlFormatCard.innerHTML = supports[su_index];
-      htmlFormatCitation.innerHTML = supports[su_index];
-      htmlThemeCard.innerHTML = themes[th_index];
-      htmlThemeCitation.innerHTML = themes[th_index];
-      htmlTargetCard.innerHTML = targets[ta_index];
-      htmlTargetCitation.innerHTML = targets[ta_index];
-      htmlTechnicalCard.innerHTML = technicalContraints[tc_index];
-      htmlTechnicalCitation.innerHTML = technicalContraints[tc_index];
-    }
+  if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+    randomizeWord();
+    let unlockedCards = document.querySelectorAll('.unlocked-card');
+    unlockedCards.forEach((unlockedCard) => {
+      createNewCard(unlockedCard);
+      animateCard(unlockedCard);
+    });
+
   }
+}
+
+function randomizeWord(card) {
+
+  var format_index = Math.floor(Math.random() * supports.length);
+  var theme_index = Math.floor(Math.random() * themes.length);
+  var target_index = Math.floor(Math.random() * targets.length);
+  var technical_index = Math.floor(Math.random() * technicalContraints.length);
+
+  formatText.innerHTML = supports[format_index];
+  formatQuotation.innerHTML = supports[format_index];
+
+  themeText.innerHTML = themes[theme_index];
+  themeQuotation.innerHTML = themes[theme_index];
+
+  targetText.innerHTML = targets[target_index];
+  targetQuotation.innerHTML = targets[target_index];
+
+  technicalText.innerHTML = technicalContraints[technical_index];
+  technicalQuotation.innerHTML = technicalContraints[technical_index];
+}
+
+function animateCard(card) {
+  card.animate(fallAnimation, fallTiming);
+  setTimeout(() => {
+    card.remove();
+  }, 150);
+}
+
+function createNewCard(card) {
+  let newCard = document.createElement('div');
+  newCard.classList.add('card', 'unlocked-card');
+  newCard.innerHTML = card.innerHTML;
+  card.parentNode.appendChild(newCard);
+}
+
+const fallAnimation = [
+  {
+    transform: 'translate(0)'
+  },
+  {
+    transform: 'translate(-2%, 50%)'
+  },
+  {
+    transform: 'translate(-2%, 100%)',
+    filter: 'opacity(0)'
+  }
+];
+
+const fallTiming = {
+  duration: 150,
+  iterations: 1,
+  easing: 'ease-in-out',
+  fill: 'forwards'
 }
