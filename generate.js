@@ -135,7 +135,7 @@ document.body.onkeyup = function(e) {
       htmlTargetCard.innerHTML = targets[ta_index];
       htmlTargetCitation.innerHTML = targets[ta_index];
       htmlTechnicalCard.innerHTML = technicalContraints[tc_index];
-      htmlTechnicalCitations.innerHTML = technicalContraints[tc_index];
+      htmlTechnicalCitation.innerHTML = technicalContraints[tc_index];
     }
   }
 }
