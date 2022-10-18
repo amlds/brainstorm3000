@@ -68,7 +68,7 @@ let themes = [
     'Space',
     'Video games',
     'Podcast',
-    'Show',
+    'Shows',
     'Art',
     'Creation',
     'Music',
