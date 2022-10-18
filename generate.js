@@ -1,4 +1,4 @@
-var targets = [
+let targets = [
   'retraités',
   'sportifs professionnels',
   'licenciés d\'un club de sport',
@@ -32,7 +32,7 @@ var targets = [
   'gamers'
 ];
 
-var technicalContraints = [
+let technicals = [
   'Réalité augmentée',
   'une API',
   'Géolocalisation',
@@ -52,7 +52,7 @@ var technicalContraints = [
   'Inteligence artificelle'
 ];
 
-var themes = [
+let themes = [
   'open data',
   'écologie',
   'espace',
@@ -81,7 +81,7 @@ var themes = [
   'Alimentation'
 ];
 
-var supports = [
+let supports = [
   'une Mobile App',
   'une Mobile App',
   'une Mobile App',
@@ -100,74 +100,116 @@ var supports = [
   'un Chatbot'
 ];
 
-var colors = [
-'#A8CBFE',
-'#CABBE9',
-'#F2B5BC',
-'#FEE9A6',
-'#AFEBDA'
-]
+const formatQuotation = document.querySelector('#format-quotation');
+const themeQuotation = document.querySelector('#theme-quotation');
+const targetQuotation = document.querySelector('#target-quotation');
+const technicalQuotation = document.querySelector('#technical-quotation');
 
-let formatCard = document.querySelector('#format-card');
-let themeCard = document.querySelector('#theme-card');
-let targetCard = document.querySelector('#target-card');
-let technicalCard = document.querySelector('#technical-card');
+const generateBtn = document.querySelector('#generate-btn');
 
-let formatText = document.querySelector('#format-text');
-let themeText = document.querySelector('#theme-text');
-let targetText = document.querySelector('#target-text');
-let technicalText = document.querySelector('#technical-text');
+function getLocks() {
+  document.querySelectorAll('.lock').forEach((lock) => {
+    lock.addEventListener('click', () => {
+      toggleLockCard(lock);
+    });
+  });
+}
 
-let formatQuotation = document.querySelector('#format-quotation');
-let themeQuotation = document.querySelector('#theme-quotation');
-let targetQuotation = document.querySelector('#target-quotation');
-let technicalQuotation = document.querySelector('#technical-quotation');
+getLocks();
 
 document.body.onkeyup = function(e) {
-
   if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
-    randomizeWord();
-    let unlockedCards = document.querySelectorAll('.unlocked-card');
-    unlockedCards.forEach((unlockedCard) => {
-      createNewCard(unlockedCard);
-      animateCard(unlockedCard);
-    });
-
+    if (!generateBtn.disabled) {
+      shakeIdeas();
+    }
   }
 }
 
-function randomizeWord(card) {
+generateBtn.addEventListener('click', () => {
+  shakeIdeas();
+});
 
-  var format_index = Math.floor(Math.random() * supports.length);
-  var theme_index = Math.floor(Math.random() * themes.length);
-  var target_index = Math.floor(Math.random() * targets.length);
-  var technical_index = Math.floor(Math.random() * technicalContraints.length);
 
-  formatText.innerHTML = supports[format_index];
-  formatQuotation.innerHTML = supports[format_index];
+function toggleLockCard(lock) {
+  let card = lock.parentElement;
+  lock.classList.toggle('open');
+  card.classList.toggle('unlocked');
+}
 
-  themeText.innerHTML = themes[theme_index];
-  themeQuotation.innerHTML = themes[theme_index];
+function shakeIdeas() {
+  document.querySelectorAll('.card').forEach((card) => {
+    if (card.classList.contains('unlocked')) {
+      animateCard(card);
+      createNewCard(card);
+    } else {
+      // here is just to debug
+      recreateNewCard(card);
+    }
+  });
 
-  targetText.innerHTML = targets[target_index];
-  targetQuotation.innerHTML = targets[target_index];
+  getLocks();
+}
 
-  technicalText.innerHTML = technicalContraints[technical_index];
-  technicalQuotation.innerHTML = technicalContraints[technical_index];
+function randomizeWord(type) {
+  switch (type) {
+    case "format":
+      let format_index = Math.floor(Math.random() * supports.length);
+      formatQuotation.innerHTML = supports[format_index];
+      return supports[format_index];
+
+    case "theme":
+      let theme_index = Math.floor(Math.random() * themes.length);
+      themeQuotation.innerHTML = themes[theme_index];
+      return themes[theme_index];
+
+    case "target":
+      let target_index = Math.floor(Math.random() * targets.length);
+      targetQuotation.innerHTML = targets[target_index];
+      return targets[target_index];
+
+    case "technical":
+      let technical_index = Math.floor(Math.random() * technicals.length);
+      technicalQuotation.innerHTML = technicals[technical_index];
+      return technicals[technical_index];
+  }
 }
 
 function animateCard(card) {
+  generateBtn.disabled = true;
   card.animate(fallAnimation, fallTiming);
   setTimeout(() => {
     card.remove();
+    generateBtn.disabled = false;
   }, 150);
 }
 
 function createNewCard(card) {
+  // initialize new card
   let newCard = document.createElement('div');
-  newCard.classList.add('card', 'unlocked-card');
-  newCard.innerHTML = card.innerHTML;
-  card.parentNode.appendChild(newCard);
+
+  // add infos to the new card
+  newCard.dataset.type = card.dataset.type;
+  newCard.classList.add('card', 'unlocked', 'new');
+  let newWord = randomizeWord(card.dataset.type);
+  let lock = `<span class="color open lock ${card.dataset.type}-color"></span>`
+  let title = `<h2 class="card-text">${newWord}</h2>`;
+  newCard.innerHTML =
+  ` ${lock} ${title} `;
+
+  // add new card to the DOM
+  let cardContainer = card.parentElement;
+  cardContainer.appendChild(newCard);
+}
+
+function recreateNewCard(card) {
+  // initialize new card
+  let newCard = card.cloneNode(true);
+  newCard.classList.remove('new');
+
+  // add new card to the DOM
+  let cardContainer = card.parentElement;
+  cardContainer.appendChild(newCard);
+  card.remove();
 }
 
 const fallAnimation = [
