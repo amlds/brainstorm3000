@@ -125,6 +125,7 @@ const targetQuotation = document.querySelector('#target-quotation');
 const technicalQuotation = document.querySelector('#technical-quotation');
 
 const generateBtn = document.querySelector('#generate-btn');
+const unlockAllBtn = document.querySelector('#unlock-all-btn');
 
 function getLocks() {
   document.querySelectorAll('.lock').forEach((lock) => {
@@ -132,6 +133,16 @@ function getLocks() {
       toggleLockCard(lock);
       console.log(lock);
     });
+  });
+}
+
+unlockAllBtn.addEventListener('click', unlockAll);
+
+
+function unlockAll() {
+  document.querySelectorAll('.lock').forEach((lock) => {
+    lock.classList.add('open');
+    lock.parentNode.classList.add('unlocked');
   });
 }
 
