@@ -22,9 +22,12 @@
 :root {
   --red: #E9362A;
   --dark-red: #D32F24;
+  --light-red: #FDF9FA;
   --purple: #7A78F7;
   --yellow: #F7C66C;
+  --dark-yellow: #875D10;
   --green: #68D98F;
+  --dark-green: #186432;
 }
 
 body {
@@ -32,29 +35,6 @@ body {
   font-family: "circularMedium";
 }
 
-.title {
-  font-family: "circularBold";
-  font-size: 36px;
-  font-weight: 700;
-  margin: 6px 0px;
-}
-
-
-.desc {
-  font-family: "circularMedium";
-  font-size: 20px;
-  font-weight: 500;
-  color: #333333;
-  margin: 6px 0px;
-}
-
-p {
-  font-family: "circularMedium";
-  font-size: 16px;
-  font-weight: 500;
-  color: #333333;
-  margin: 0px;
-}
 .warning {
   display: flex;
   align-items: flex-end;
@@ -63,6 +43,7 @@ p {
 
 .warning-icon {
   height: 20px;
+  color: #333333;
 }
 
 #generate-btn {
@@ -83,26 +64,55 @@ p {
   background-color: var(--dark-red);
 }
 
-header {
-  background-image: url("img/banner.svg");
-  height: 28vh;
-}
 
 .logo {
   width: 250px;
-  position: relative;
-  top: 64px;
-  left: 90px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 68vh;
-  padding: 40px 80px;
+  height: 100vh;
+  padding: 50px 80px 0px;
   box-sizing: border-box;
+  position: relative;
+}
 
+.deco {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.main-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: "circularBold";
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.desc {
+  font-family: "circularMedium";
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0;
+}
+
+p {
+  font-family: "circularMedium";
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0px;
 }
 
 .row {
@@ -200,6 +210,21 @@ header {
   filter: opacity(0.5);
 
 }
+.result {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--light-red);
+  transform: translateX(-80px);
+}
+
+.result-title {
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
 
 .citation {
   border: 1px solid #E1E1E1;
@@ -245,16 +270,18 @@ header {
 
 .target-color {
   background-color: var(--yellow);
+  color: var(--dark-yellow);
 }
 
 .technical-color {
   background-color: var(--green);
+  color: var(--dark-green);
 }
 
-footer {
+.love {
   position: absolute;
   bottom: 2vh;
-  right: 4vw;
+  right: 2vw;
 }
 
 @keyframes new {
