@@ -1,103 +1,122 @@
 let targets = [
-  'retraités',
-  'sportifs professionnels',
-  'licenciés d\'un club de sport',
-  'jeunes développeurs sortis de Wagon',
-  'parents confinés',
-  'etudiants',
-  'backpackers',
-  'entrepreneurs',
-  'joueurs de jeux vidéos',
-  'personnes cherchant à se cultiver',
-  'enseignants',
-  'lycéens',
-  'malades',
-  'médecins',
-  'journalistes',
-  'cyclistes',
-  'agent immobilier',
-  'auto ecole',
-  'speaker',
-  'propriétaire',
-  'confinés',
-  'agents immobilier',
-  'enfants',
-  'prof de musique',
-  'prof de langues',
-  'mineurs',
-  'LGBTQI',
-  'association',
-  'nomades',
-  'femmes',
-  'gamers'
+    'Children',
+    'High school students',
+    'Students',
+    'Language students',
+    'Young Le Wagon alumni',
+    'Teachers',
+    'Music teachers',
+    'Language teachers',
+    'Entrepreneurs',
+    'Journalists',
+    'Cyclists',
+    'Professional athletes',
+    'Sports clubs',
+    'Backpackers',
+    'Sick people',
+    'Doctors',
+    'Photographers',
+    'Digital nomads',
+    'Speakers',
+    'Gamers',
+    'Driving schools',
+    'Real estate agents',
+    'People seeking a flat',
+    'Parents',
+    'Confined people',
+    'Women',
+    'LGBTQI+',
+    'Associations',
+    'Curious people',
+    'Retirees',
+    'House owner',
+    'Construction workers',
+    'Flatmates',
+    'Couples',
+    'Hikers',
+    'Freelancers',
+    'Gardeners',
+    'Cooks',
+    'Musicians',
+    'Tourists',
+    'Designers'
 ];
 
 let technicals = [
-  'Réalité augmentée',
-  'une API',
-  'Géolocalisation',
-  'la Reconnaissance vocale',
-  'le Scrapping',
-  'le Jeux video',
-  'le Streaming',
-  'le Calendar',
-  'la Traduction',
-  'le Scan',
-  'le Cartographie',
-  'l\'IOT',
-  'le QR Code',
-  'NFC',
-  'le Swipe',
-  'la Datavisualisation',
-  'Inteligence artificelle'
+    'Augmented Reality',
+    'API',
+    'Geolocation',
+    'Speech Recognition',
+    'Scrapping',
+    'Video game',
+    'Streaming',
+    'Calendar',
+    'Translation',
+    'Scan',
+    'Cartography',
+    'IOT',
+    'QR Code',
+    'NFC',
+    'Swipe',
+    'Data visualization',
+    'Artificial Inteligence'
 ];
 
 let themes = [
-  'open data',
-  'écologie',
-  'espace',
-  'Jeux vidéo',
-  'Podcast',
-  'Emissions',
-  'Besoin artistiques',
-  'Création',
-  'Musique',
-  'Remote',
-  'Management',
-  'Analyse traffic',
-  'Enseignement',
-  'Débats',
-  'Allérgies',
-  'Meteo',
-  'Données médicales',
-  'Workflow',
-  'remote',
-  'Santé',
-  'enseignement',
-  'Allergie',
-  'Collaboratif',
-  'Apprentissage',
-  'Douleur',
-  'Alimentation'
+    'SDG',
+    'Ecology',
+    'Space',
+    'Video games',
+    'Podcast',
+    'Show',
+    'Art',
+    'Creation',
+    'Music',
+    'Remote',
+    'Management',
+    'Traffic Analysis',
+    'Teaching',
+    'Debates',
+    'Allergies',
+    'Weather',
+    'Medicals data',
+    'Workflow',
+    'Health',
+    'Collaborativity',
+    'Learning',
+    'Pain',
+    'Food',
+    'Sport',
+    'Agriculture',
+    'Sexual education',
+    'Cinema',
+    'Movies',
+    'Politic',
+    'Animals rights',
+    'Addictions',
+    'Travel',
+    'Fashion',
+    'Transports'
 ];
 
 let supports = [
-  'une Mobile App',
-  'une Mobile App',
-  'une Mobile App',
-  'une Mobile App',
-  'une Mobile App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'une Web App',
-  'un Chatbot'
+    'Mobile App',
+    'Mobile App',
+    'Mobile App',
+    'Mobile App',
+    'Mobile App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Web App',
+    'Chatbot',
+    'Chrome extension'
 ];
 
 const formatQuotation = document.querySelector('#format-quotation');
@@ -111,6 +130,7 @@ function getLocks() {
   document.querySelectorAll('.lock').forEach((lock) => {
     lock.addEventListener('click', () => {
       toggleLockCard(lock);
+      console.log(lock);
     });
   });
 }
@@ -131,7 +151,7 @@ generateBtn.addEventListener('click', () => {
 
 
 function toggleLockCard(lock) {
-  let card = lock.parentElement;
+  let card = lock.parentNode;
   lock.classList.toggle('open');
   card.classList.toggle('unlocked');
 }
@@ -186,19 +206,18 @@ function animateCard(card) {
 function createNewCard(card) {
   // initialize new card
   let newCard = document.createElement('div');
-
-  // add infos to the new card
   newCard.dataset.type = card.dataset.type;
   newCard.classList.add('card', 'unlocked', 'new');
-  let newWord = randomizeWord(card.dataset.type);
+
+  // add infos to the new card
   let lock = `<span class="color open lock ${card.dataset.type}-color"></span>`
+
+  let newWord = randomizeWord(card.dataset.type);
   let title = `<h2 class="card-text">${newWord}</h2>`;
-  newCard.innerHTML =
-  ` ${lock} ${title} `;
+  newCard.innerHTML = `${lock} ${title}`;
 
   // add new card to the DOM
-  let cardContainer = card.parentElement;
-  cardContainer.appendChild(newCard);
+  card.parentNode.appendChild(newCard);
 }
 
 function recreateNewCard(card) {
@@ -206,9 +225,8 @@ function recreateNewCard(card) {
   let newCard = card.cloneNode(true);
   newCard.classList.remove('new');
 
-  // add new card to the DOM
-  let cardContainer = card.parentElement;
-  cardContainer.appendChild(newCard);
+  // update the DOM
+  card.parentNode.appendChild(newCard);
   card.remove();
 }
 

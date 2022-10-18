@@ -23,7 +23,8 @@
   --red: #E9362A;
   --dark-red: #D32F24;
   --light-red: #FDF9FA;
-  --purple: #7A78F7;
+  --purple: #670BFF;
+  --dark-purple: #4D05C4;
   --yellow: #F7C66C;
   --dark-yellow: #875D10;
   --green: #68D98F;
@@ -32,7 +33,7 @@
 
 body {
   margin: 0;
-  font-family: "circularMedium";
+  font-family: "Inter", sans-serif;
 }
 
 .warning {
@@ -51,11 +52,10 @@ body {
   border: none;
   border-radius: 8px;
   color: #FFFFFF;
-  font-family: "circularMedium";
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   padding: 12px 24px;
-  margin: 12px 0px;
+  margin-top: 12px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 }
@@ -66,15 +66,16 @@ body {
 
 
 .logo {
-  width: 250px;
+  width: 200px;
+  margin-bottom: 2rem;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100vh;
   padding: 50px 80px 0px;
+  gap: 4rem;
   box-sizing: border-box;
   position: relative;
 }
@@ -83,7 +84,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 60%;
+  width: 750px;
 }
 
 .main-text {
@@ -96,22 +97,20 @@ body {
 .title {
   font-family: "circularBold";
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 900;
   margin: 0;
 }
 
 .desc {
-  font-family: "circularMedium";
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   color: #333333;
   margin: 0;
 }
 
-p {
-  font-family: "circularMedium";
-  font-size: 16px;
-  font-weight: 500;
+.warning-text {
+  font-size: 1rem;
+  font-weight: 400;
   color: #333333;
   margin: 0px;
 }
@@ -127,6 +126,7 @@ p {
   height: 80px;
   width: 100%;
 }
+
 .card {
   position: absolute;
   top: 0;
@@ -161,9 +161,12 @@ p {
   margin: auto;
   height: 25px;
   width: 25px;
+}
+
+.card.unlocked .color::after {
   opacity: 0;
 }
-.card:hover .color::after {
+.card.unlocked:hover .color::after {
   opacity: 1;
 }
 
@@ -185,7 +188,6 @@ p {
 
 .card-text {
   font-size: 20px;
-  font-family: 'Inter', sans-serif;
   font-weight: bold;
 }
 
@@ -219,11 +221,12 @@ p {
   align-items: center;
   background-color: var(--light-red);
   transform: translateX(-80px);
+  position: relative;
 }
 
 .result-title {
+  font-family: "circularBold";
   font-size: 28px;
-  font-family: 'Inter', sans-serif;
   font-weight: bold;
 }
 
@@ -234,6 +237,7 @@ p {
   text-align: center;
   line-height: 38px;
   position: relative;
+  border-radius: 8px;
 }
 
 .quote {
@@ -250,15 +254,19 @@ p {
 
 .quotation {
   white-space: nowrap;
-  font-size: 20px;
   color: #555555;
+  font-size: 20px;
   font-weight: 500;
   margin: 0;
 }
 
 .tags {
+  font-size: 1.25rem;
+  font-weight: 900;
   padding: 6px 10px;
   color: #FFFFFF;
+  border-radius: 4px;
+
 }
 
 .format-color {
@@ -279,10 +287,20 @@ p {
   color: var(--dark-green);
 }
 
-.love {
+.love-footer {
   position: absolute;
   bottom: 2vh;
   right: 2vw;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+  color: #333333;
+}
+
+.linkedin_link {
+  color: var(--dark-purple);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 @keyframes new {
