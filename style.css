@@ -106,6 +106,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
   padding: 50px 80px 0px;
   gap: 4rem;
