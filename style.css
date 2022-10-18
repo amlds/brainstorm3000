@@ -23,6 +23,7 @@
   --red: #E9362A;
   --dark-red: #D32F24;
   --light-red: #FDF9FA;
+  --light-purple: #EFE6F9;
   --purple: #670BFF;
   --dark-purple: #4D05C4;
   --yellow: #F7C66C;
@@ -47,6 +48,10 @@ body {
   color: #333333;
 }
 
+.btns {
+  display: flex;
+  gap: 12px;
+}
 #generate-btn {
   background-color: var(--red);
   border: none;
@@ -62,6 +67,34 @@ body {
 
 #generate-btn:hover {
   background-color: var(--dark-red);
+}
+
+#unlock-all-btn {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--light-purple);
+  color: var(--dark-purple);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 16px;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+#unlock-all-btn svg {
+  height: 20px;
+}
+
+#unlock-all-btn:hover {
+  background-color: var(--purple);
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
 }
 
 
@@ -85,6 +118,7 @@ body {
   top: 0;
   right: 0;
   width: 750px;
+  z-index: -1;
 }
 
 .main-text {
