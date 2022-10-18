@@ -16,15 +16,23 @@
        url("fonts/CircularStd-Medium.woff2"),
        url("fonts/CircularStd-Medium.eot");
 }
-.warning {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --red: #E9362A;
+  --dark-red: #D32F24;
+  --purple: #7A78F7;
+  --yellow: #F7C66C;
+  --green: #68D98F;
 }
-.warning-icon {
-  height: 20px;
+
+body {
+  margin: 0;
+  font-family: "circularMedium";
 }
-h1 {
+
+.title {
   font-family: "circularBold";
   font-size: 36px;
   font-weight: 700;
@@ -32,7 +40,7 @@ h1 {
 }
 
 
-h3 {
+.desc {
   font-family: "circularMedium";
   font-size: 20px;
   font-weight: 500;
@@ -47,25 +55,37 @@ p {
   color: #333333;
   margin: 0px;
 }
-
-body {
-  margin: 0;
-  font-family: "circularMedium";
+.warning {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 65vh;
-  padding: 40px 80px;
-  box-sizing: border-box;
+.warning-icon {
+  height: 20px;
+}
 
+#generate-btn {
+  background-color: var(--red);
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-family: "circularMedium";
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  margin: 12px 0px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+#generate-btn:hover {
+  background-color: var(--dark-red);
 }
 
 header {
   background-image: url("img/banner.svg");
-  height: 30vh;
+  height: 28vh;
 }
 
 .logo {
@@ -73,6 +93,16 @@ header {
   position: relative;
   top: 64px;
   left: 90px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 68vh;
+  padding: 40px 80px;
+  box-sizing: border-box;
+
 }
 
 .row {
@@ -83,7 +113,7 @@ header {
 
 .card-container {
   position: relative;
-  height: 90px;
+  height: 80px;
   width: 100%;
 }
 .card {
@@ -103,8 +133,49 @@ header {
   background-color: white;
 }
 
-.card.active {
-  animation: next 0.3s ease-in-out;
+.card.new {
+  animation: new 150ms ease-in-out;
+}
+
+.color {
+  width: 50px;
+  height: 100%;
+  border-radius: 8px 0px 0px 8px;
+  position: relative;
+  cursor: pointer;
+}
+.color::after {
+  position: absolute;
+  inset: 0 0 6px 0;
+  margin: auto;
+  height: 25px;
+  width: 25px;
+  opacity: 0;
+}
+.card:hover .color::after {
+  opacity: 1;
+}
+
+.color::after {
+  content: url("img/lock-closed.svg");
+}
+.color:hover::after {
+  content: url("img/lock-open.svg");
+}
+
+.color.open::after {
+  content: url("img/lock-open.svg");
+}
+
+.color.open:hover::after {
+  content: url("img/lock-closed.svg");
+}
+
+
+.card-text {
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
 }
 
 .back-card {
@@ -128,18 +199,6 @@ header {
   z-index: -1;
   filter: opacity(0.5);
 
-}
-.color {
-  width: 50px;
-  height: 100%;
-  border-radius: 8px 0px 0px 8px;
-  background: #E9362A;
-}
-
-/* à supprimer */
-.my-card {
-  border: 1px solid lightgray;
-  border-radius: 3px;
 }
 
 .citation {
@@ -177,19 +236,19 @@ header {
 }
 
 .format-color {
-  background-color: #E9362A;
+  background-color: var(--red);
 }
 
 .theme-color{
-  background-color: #7A78F7;
+  background-color: var(--purple);
 }
 
 .target-color {
-  background-color: #F7C66C;
+  background-color: var(--yellow);
 }
 
 .technical-color {
-  background-color: #68D98F;
+  background-color: var(--green);
 }
 
 footer {
@@ -198,13 +257,16 @@ footer {
   right: 4vw;
 }
 
-@keyframes next {
+@keyframes new {
   0% {
-    transform: translateY(0);
+    top: -15px;
+    left: 15px;
+    opacity: 0;
 
   }
   100% {
-    transform: translateY(100%);
-    filter: opacity(0);
+    top: 0;
+    left: 0;
+    opacity: 1;
   }
 }

@@ -15,9 +15,9 @@
     <img class="logo" src="img/logo.svg" alt="logo le wagon">
   </header>
   <div class="container">
-    <div class="">
-      <h1>Out of inspiration</h1>
-      <h3>Tap on spacebar to generate or click on a word to lock it</h3>
+    <div>
+      <h1 class="title">Out of inspiration</h1>
+      <h3 class="desc">Tap on spacebar or click on the button to generate some ideas. You can also click on a card to lock it.</h3>
       <div class="warning">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 warning-icon" >
           <path fill-rule="evenodd"
@@ -31,13 +31,14 @@
           clip-rule="evenodd" />
         </svg>
       </div>
+      <button id="generate-btn">Generate</button>
     </div>
 
     <div class="row" id="my-container">
       <div class="card-container">
-        <div class="card unlocked-card" id="format-card" data-type="format">
-          <span class="color format-color"></span>
-          <h2 id="format-text">Format</h2>
+        <div class="card unlocked" data-type="format">
+          <span class="color open lock format-color"></span>
+          <h2 class="card-text" id="format-text">Format</h2>
         </div>
 
         <div class="back-card"></div>
@@ -45,9 +46,9 @@
       </div>
 
       <div class="card-container">
-        <div class="card unlocked-card" id="theme-card" data-type="theme">
-          <span class="color theme-color"></span>
-          <h2 id="theme-text">Theme</h2>
+        <div class="card unlocked" data-type="theme">
+          <span class="color open lock theme-color"></span>
+          <h2 class="card-text" id="theme-text">Theme</h2>
 
         </div>
         <div class="back-card"></div>
@@ -55,9 +56,9 @@
       </div>
 
       <div class="card-container">
-        <div class="card unlocked-card" id="target-card" data-type="target">
-          <span class="color target-color"></span>
-          <h2 id="target-text">Target</h2>
+        <div class="card unlocked" data-type="target">
+          <span class="color open lock target-color"></span>
+          <h2 class="card-text" id="target-text">Target</h2>
         </div>
 
         <div class="back-card"></div>
@@ -65,9 +66,9 @@
       </div>
 
       <div class="card-container">
-        <div class="card unlocked-card" id="technical-card" data-type="technical">
-          <span class="color technical-color"></span>
-          <h2 id="technical-text">Technical constraint</h2>
+        <div class="card unlocked" data-type="technical">
+          <span class="color open lock technical-color"></span>
+          <h2 class="card-text" id="technical-text">Technical constraint</h2>
         </div>
 
         <div class="back-card"></div>
