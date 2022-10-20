@@ -141,8 +141,13 @@ unlockAllBtn.addEventListener('click', unlockAll);
 
 function unlockAll() {
   document.querySelectorAll('.lock').forEach((lock) => {
-    lock.classList.add('open');
-    lock.parentNode.classList.add('unlocked');
+    if (!lock.classList.contains('open')) {
+      lock.classList.add('diseappear');
+      setTimeout(() => {
+        lock.parentNode.classList.add('unlocked');
+        lock.classList.add('open');
+      }, 300);
+    }
   });
 }
 
