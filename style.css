@@ -37,6 +37,22 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+header{
+  padding: 3em 6em 0em 6em;
+}
+
+main{
+  padding: 0 6em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5em;
+  height: 100vh;
+}
+
 .warning {
   display: flex;
   align-items: flex-end;
@@ -101,17 +117,6 @@ body {
 .logo {
   width: 200px;
   margin-bottom: 2rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 50px 80px 0px;
-  gap: 4rem;
-  box-sizing: border-box;
-  position: relative;
 }
 
 .deco {
@@ -252,22 +257,8 @@ body {
   filter: opacity(0.5);
 
 }
-.result {
-  width: 100vw;
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--light-red);
-  transform: translateX(-80px);
-  position: relative;
-}
 
-.result-title {
-  font-family: "circularBold";
-  font-size: 28px;
-  font-weight: bold;
-}
+
 
 .citation {
   border: 1px solid #E1E1E1;
@@ -327,9 +318,6 @@ body {
 }
 
 .love-footer {
-  position: absolute;
-  bottom: 2vh;
-  right: 2vw;
   font-size: 0.875rem;
   font-weight: 500;
   margin: 0;
@@ -340,6 +328,31 @@ body {
   color: var(--dark-purple);
   font-weight: 700;
   text-decoration: none;
+}
+
+footer {
+  width: 100%;
+  padding: 2em 6em 1em 6em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3em;
+  background-color: var(--light-red);
+  position: relative;
+}
+
+footer .content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .title {
+  font-family: "circularBold";
+  font-size: 28px;
+  font-weight: bold;
 }
 
 @keyframes new {
