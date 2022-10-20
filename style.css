@@ -198,25 +198,29 @@ body {
   width: 25px;
 }
 
-.card.unlocked .color::after {
+.card.unlocked .lock::after {
   opacity: 0;
 }
-.card.unlocked:hover .color::after {
+.card.unlocked:hover .lock::after {
   opacity: 1;
 }
 
-.color::after {
+.lock::after {
   content: url("img/lock-closed.svg");
 }
-.color:hover::after {
+.lock:hover::after {
+  content: url("img/lock-open.svg");
+}
+.lock.diseappear::after {
+  content: url("img/lock-open.svg");
+  animation: unlock 300ms ease-in-out;
+}
+
+.lock.open::after {
   content: url("img/lock-open.svg");
 }
 
-.color.open::after {
-  content: url("img/lock-open.svg");
-}
-
-.color.open:hover::after {
+.lock.open:hover::after {
   content: url("img/lock-closed.svg");
 }
 
@@ -332,7 +336,7 @@ body {
   color: #333333;
 }
 
-.linkedin_link {
+.linkedin-link {
   color: var(--dark-purple);
   font-weight: 700;
   text-decoration: none;
@@ -349,5 +353,13 @@ body {
     top: 0;
     left: 0;
     opacity: 1;
+  }
+}
+@keyframes unlock {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
