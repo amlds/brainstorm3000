@@ -54,14 +54,17 @@ main{
 }
 
 .warning {
-  display: flex;
+  display: inline-flex;
   align-items: flex-end;
   gap: 8px;
 }
 
 .warning-icon {
-  height: 20px;
   color: #333333;
+  height:1em;
+  width:1em;
+  top: .125em;
+  position: relative;
 }
 
 .btns {
@@ -262,7 +265,6 @@ main{
   border: 1px solid #E1E1E1;
   padding: 17px 32px;
   margin: 0 auto;
-  text-align: center;
   line-height: 38px;
   position: relative;
   border-radius: 8px;
@@ -281,7 +283,6 @@ main{
 }
 
 .quotation {
-  white-space: nowrap;
   color: #555555;
   font-size: 20px;
   font-weight: 500;
@@ -289,6 +290,7 @@ main{
 }
 
 .tags {
+  white-space: nowrap;
   font-size: 1.25rem;
   font-weight: 900;
   padding: 6px 10px;
@@ -376,41 +378,102 @@ footer .title {
 }
 
 @media only screen and (max-width: 600px) {
+  .container {
+    gap: 4%;
+  }
+
+  header {
+    padding: 10% 5%;
+  }
+
+  .deco {
+    display: none;
+  }
+
   .main-text {
     margin-bottom: 0px;
   }
+
+  main {
+    padding: 0 5%;
+  }
+
   .row {
     flex-direction: column;
     gap: 12px;
   }
+
   .card-container {
     height: 60px;
   }
+
   .card {
     height: 60px;
   }
+
   .card-text {
     font-size: 16px;
   }
+
   .citation {
     padding: 12px 24px;
-    line-height: 28px;
+    line-height: 2.25rem;
   }
+
+  .tags {
+    font-size: 1rem;
+    padding: 4px 8px;
+  }
+
   .quotation {
     font-size: 16px;
   }
+
   .quote {
     top: -20px;
-    right: 95%;
+    right: 90%;
   }
+
   .quote:nth-of-type(even) {
-    top: 60%;
-    left: 95%;
+    top: 85%;
+    left: 90%;
   }
+
+  .content {
+    gap: 12px;
+  }
+
   footer {
     padding: 1em 3em 1em 3em;
   }
+
   footer .title {
     font-size: 24px;
+  }
+
+  .back-color {
+    top: 5%;
+    left: -10px;
+    height: 90%;
+  }
+
+  .back-card {
+    top: 5%;
+    left: -10px;
+    height: 90%;
+  }
+
+  @keyframes new {
+    0% {
+      top: 0px;
+      left: 15px;
+      opacity: 0;
+
+    }
+    100% {
+      top: 0;
+      left: 0;
+      opacity: 1;
+    }
   }
 }
