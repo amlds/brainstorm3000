@@ -212,7 +212,7 @@ function randomizeWord(type) {
 
 function animateCard(card) {
   generateBtn.disabled = true;
-  card.animate(fallAnimation, fallTiming);
+  card.classList.add('old');
   setTimeout(() => {
     card.remove();
     generateBtn.disabled = false;
@@ -244,24 +244,4 @@ function recreateNewCard(card) {
   // update the DOM
   card.parentNode.appendChild(newCard);
   card.remove();
-}
-
-const fallAnimation = [
-  {
-    transform: 'translate(0)'
-  },
-  {
-    transform: 'translate(-2%, 50%)'
-  },
-  {
-    transform: 'translate(-2%, 100%)',
-    filter: 'opacity(0)'
-  }
-];
-
-const fallTiming = {
-  duration: 150,
-  iterations: 1,
-  easing: 'ease-in-out',
-  fill: 'forwards'
 }
