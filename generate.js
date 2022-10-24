@@ -127,11 +127,13 @@ const technicalQuotation = document.querySelector('#technical-quotation');
 const generateBtn = document.querySelector('#generate-btn');
 const unlockAllBtn = document.querySelector('#unlock-all-btn');
 
-function getLocks() {
-  document.querySelectorAll('.lock').forEach((lock) => {
-    lock.addEventListener('click', () => {
-      toggleLockCard(lock);
-      console.log(lock);
+
+function wantLock() {
+  document.querySelectorAll('.card').forEach((card) => {
+    card.addEventListener('click', () => {
+      let children = card.children;
+      console.log(children[0]);
+      toggleLockCard(children[0]);
     });
   });
 }
@@ -146,12 +148,13 @@ function unlockAll() {
       setTimeout(() => {
         lock.parentNode.classList.add('unlocked');
         lock.classList.add('open');
+        lock.classList.remove('diseappear');
       }, 300);
     }
   });
 }
 
-getLocks();
+wantLock();
 
 document.body.onkeyup = function(e) {
   if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
@@ -173,6 +176,7 @@ function toggleLockCard(lock) {
 }
 
 function shakeIdeas() {
+  console.log("Je suis dans la fonction shakeIdeas");
   document.querySelectorAll('.card').forEach((card) => {
     if (card.classList.contains('unlocked')) {
       animateCard(card);
@@ -183,7 +187,7 @@ function shakeIdeas() {
     }
   });
 
-  getLocks();
+  wantLock();
 }
 
 function randomizeWord(type) {
@@ -229,7 +233,7 @@ function createNewCard(card) {
   let lock = `<span class="color open lock ${card.dataset.type}-color"></span>`
 
   let newWord = randomizeWord(card.dataset.type);
-  let title = `<h2 class="card-text">${newWord}</h2>`;
+  let title = `<span>${newWord}</span>`;
   newCard.innerHTML = `${lock} ${title}`;
 
   // add new card to the DOM

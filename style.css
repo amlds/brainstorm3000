@@ -30,6 +30,7 @@
   --dark-yellow: #875D10;
   --green: #68D98F;
   --dark-green: #186432;
+  --white: #ffffff;
 }
 
 body {
@@ -45,6 +46,20 @@ main{
   padding: 0 6em;
 }
 
+h1 {
+  font-family: "circularBold";
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -53,29 +68,16 @@ main{
   height: 100vh;
 }
 
-.warning {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.warning-icon {
-  color: #333333;
-  height:1em;
-  width:1em;
-  top: .125em;
-  position: relative;
-}
-
-.btns {
+.btn-container {
   display: flex;
   gap: 12px;
 }
+
 #generate-btn {
   background-color: var(--red);
   border: none;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 1rem;
   font-weight: 700;
   padding: 12px 24px;
@@ -113,9 +115,8 @@ main{
   background-color: var(--purple);
   border: none;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: var(--white);
 }
-
 
 .logo {
   width: 200px;
@@ -130,61 +131,48 @@ main{
   z-index: -1;
 }
 
-.main-text {
+.text {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.title {
-  font-family: "circularBold";
-  font-size: 36px;
-  font-weight: 900;
-  margin: 0;
-}
-
-.desc {
-  font-size: 20px;
-  font-weight: 700;
-  color: #333333;
-  margin: 0;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .warning-text {
   font-size: 1rem;
   font-weight: 400;
   color: #333333;
-  margin: 0px;
+  margin: 0;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .card-container {
   position: relative;
   height: 80px;
-  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .card {
   position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
-  column-gap: 8px;
-
-  width: 100%;
+  
+  gap: 0.75rem;
   height: 100%;
+  width: 100%;
+  padding-right: 1rem;
+  box-sizing: border-box;
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
-  background-color: white;
+  background-color: var(--white);
 }
 
 .card.new {
@@ -202,6 +190,7 @@ main{
   position: relative;
   cursor: pointer;
 }
+
 .color::after {
   position: absolute;
   inset: 0 0 6px 0;
@@ -236,34 +225,14 @@ main{
   content: url("img/lock-closed.svg");
 }
 
-
-.card-text {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.back-card {
+.card.back{
   position: absolute;
   top: -15px;
   left: 15px;
-  height: 100%;
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.03);
   z-index: -2;
-
+  opacity: 50%;
 }
-.back-color {
-  position: absolute;
-  top: -15px;
-  left: 15px;
-  width: 50px;
-  height: 100%;
-  border-radius: 8px 0px 0px 8px;
-  z-index: -1;
-  filter: opacity(0.5);
 
-}
 
 .citation {
   border: 1px solid #E1E1E1;
@@ -276,14 +245,15 @@ main{
 
 .quote {
   position: absolute;
-  top: -30px;
-  right: 97%;
 }
 
+.quote:nth-of-type(odd) {
+  top: -1.5rem;
+  left: -1.5rem;
+}
 .quote:nth-of-type(even) {
-  position: absolute;
-  top: 70%;
-  left: 97%;
+  bottom: -1.5rem;
+  right: -1.5rem;
 }
 
 .quotation {
@@ -298,7 +268,7 @@ main{
   font-size: 1.25rem;
   font-weight: 900;
   padding: 6px 10px;
-  color: #FFFFFF;
+  color: var(--white);
   border-radius: 4px;
 
 }
@@ -348,6 +318,7 @@ footer {
 
 footer .content{
   width: 100%;
+  gap: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,7 +335,6 @@ footer .title {
     top: -15px;
     left: 15px;
     opacity: 0;
-
   }
   100% {
     top: 0;
@@ -393,16 +363,61 @@ footer .title {
   }
 }
 
+@media only screen and (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .deco{
+    width: 500px;
+    right: -70px;
+    top: -20px
+  }
+
+  header{
+    padding: 2em 3em 0em 3em;
+  }
+  
+  main{
+    padding: 0 3em;
+  }
+
+  footer{
+    padding: 1em 3em 0.5em 3em;
+  }
+}
+
 @media only screen and (max-width: 600px) {
-  body {
+
+  header{
+    padding: 1em 1em 0em 1em;
+  }
+  
+  main{
+    padding: 0 1em;
+  }
+
+  footer{
+    padding: 1em 1em 0.250em 1em;
+  }
+
+  body{
     overflow-x: hidden;
   }
+
+  h1{
+    font-size: 2rem;
+  }
+
+  h2{
+    font-size: 1rem;
+  }
+
   .container {
     gap: 4%;
   }
 
-  header {
-    padding: 10% 5% 0;
+  .grid {
+    grid-template-columns: 1fr;
   }
 
   #unlock-all-btn:hover {
@@ -419,31 +434,19 @@ footer .title {
     display: none;
   }
 
-  .main-text {
-    margin-bottom: 0px;
-  }
-
-  main {
-    padding: 0 5%;
-  }
-
-  .row {
-    flex-direction: column;
-    gap: 24px;
-  }
-
   .card-container {
     height: 60px;
-  }
-
-  .card {
-    height: 60px;
-  }
-
-  .card-text {
     font-size: 16px;
   }
 
+  .card.unlocked:hover .lock::after {
+    opacity: 0;
+  }
+
+  .lock:hover::after {
+    content: url("img/lock-closed.svg");
+  }
+  
   .citation {
     padding: 12px 24px;
     line-height: 2.25rem;
@@ -459,37 +462,28 @@ footer .title {
   }
 
   .quote {
-    top: -20px;
-    right: 90%;
+    width: 40px;
   }
 
+  .quote:nth-of-type(odd) {
+    top: -1.5rem;
+    left: -0.75rem;
+  }
   .quote:nth-of-type(even) {
-    top: 85%;
-    left: 90%;
-  }
-
-  .content {
-    gap: 12px;
-  }
-
-  footer {
-    padding: 1em 3em 1em 3em;
+    bottom: -1.5rem;
+    right: -0.75rem;
   }
 
   footer .title {
     font-size: 24px;
   }
 
-  .back-color {
-    top: -10%;
-    left: -6px;
-    height: 90%;
-  }
-
-  .back-card {
-    top: 5%;
+  .card.back{
+    position: absolute;
+    top: -10px;
     left: -10px;
-    height: 90%;
+    z-index: -2;
+    opacity: 50%;
   }
 
   @keyframes new {
