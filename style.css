@@ -254,6 +254,7 @@ h2 {
 .quote:nth-of-type(even) {
   bottom: -1.5rem;
   right: -1.5rem;
+  rotate: 180deg;
 }
 
 .quotation {
